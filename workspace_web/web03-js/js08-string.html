@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <script>
+        function strTest01(){
+            var str01 = "String";
+            var str02 = "Test";
+
+            var str03 =str01+str02;
+            // alert(str03);
+
+            var newString=str01.concat("Test", "Java", "Script");
+            // alert(newString);
+
+            // 파이썬의 리스트를, 자바에서는 배열이라 함
+            // 배열.join('문자'): 배열 사이사이에 문자가 삽입됨 (문자열로 반환)
+            var joinTest = ["5","10","15","20"].join("+")
+            alert(joinTest);
+
+
+        }
+
+        function strTest02(){
+            var numVal=12.5;
+            var bool=true;
+            // 문자열과 다른 타입이 만나면 문자열로 합쳐짐. 
+            var result = "String" + numVal + bool;
+            // alert(result);
+            // alert(typeof(result));
+
+            var result2 = "a" + 10 + 20
+            alert(result2);
+        }
+        
+
+        function strTest06(){
+            var prop=prompt("쉼표로 구분하여 키워드를 입력해주세요", "사과,바나나,키위,수박");
+            var propArr=porop.split(",");
+
+            var propResult="";
+            for (var i=0; i<propArr.length; i++){
+                propResult += propArr[i]+"<br>";
+            }
+            document.getElementById("key").innerHTML=propResult;
+        }
+
+
+
+
+
+    </script>
+
+    
+
+
+</head>
+<body>
+    
+    <p>문자열 합치기
+        <button onclick="strTest01();">클릭</button>
+    </p>
+
+    <p>다른 자료형 합치기
+        <button onclick="strTest02();">클릭</button>
+    </p>
+
+    <p>문자열 비교하기
+        <button onclick="strTest03();">클릭</button>
+    </p>
+
+    <p>문자열 검색하기
+        <button onclick="strTest04();">클릭</button>
+    </p>
+
+    <p>문자열 추출하기
+        <button onclick="strTest05();">클릭</button>
+    </p>
+
+    <p>키워드 나누기
+        <button onclick="strTest06();">클릭</button>
+    </p>
+
+
+
+
+</body>
+</html>

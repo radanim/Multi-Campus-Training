@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        #regist {
+            border: 1px solid black;
+            background: pink;
+            position: absolute;
+            top: 200px;
+            left: 500px;
+            display: none;
+        }
+    </style>
+    
+    <!-- 
+        display : none;			//공간을 차지하지 않는다 (만들어지지 않은 상태)
+        visibility: hidden;		//공간을 차지하고, 보이지 않는다 (만들어져 있는 상태)
+     -->
+    
+    <script type="text/javascript">
+        function openWin() {
+            var url = "js13-window-popup.html";  // popup html 팝업창으로 열기
+            var title = "myframe"; //어디에 열지, 맨 아래 위치, html이 my frame 안에 들어감. 
+            var prop = "top=200px,left=600px,width=500px,height=500px"; 
+			// 특성, 위치, 사이즈 지정, 사이즈 차이?
+            window.open(url, title, prop);
+			//변수 지정, title 열어줄 위치 설명
+        }
+    
+        function registForm() {
+            document.getElementById("regist").style.display = "block"; //회원가입 폼 regist 의 기존 display를 블록으로 바꿔 화면에 보이게 한다.
+            document.body.style.background = "gray"; //레지스트 폼 창이 열리면 body태그의 백그라운드 컬러를 회색으로 지정
+    
+            var btns = document.getElementsByName("btn");  //창열기, 회원가입의 버튼 name 은 btn이다.
+            for ( var i in btns) {
+                btns[i].disabled = "disabled"; // 모든 i값에 대해서 버튼을 disabled로 해서 작동하지 않도록 한다.
+            }
+        }
+    
+        function closeWin() {
+            document.getElementById("regist").style.display = "none"; //회원가입 폼의 display를 none 으로 바꿔서 화면에서 다시 안보이게 한다.
+            document.body.style.background = "white"; //바디 색을 다시 화이트로 바꾼다.
+    
+            var btns = document.getElementsByName("btn"); 	//창열기, 회원가입의 버튼 을 받아 disabled를 풀어준다.
+            for ( var i in btns) {
+                btns[i].disabled = "";
+            }
+        }
+    
+        function idchk() { //아이디입력 text input클릭시 동작하는 함수, alert창으로 중복체크 확인을 하도록 안내
+            alert("중복체크를 확인하세요"); 
+        }
+    	//중복체크 버튼 클릭시 작동, 팝업창을 열어준다.
+        function idCheck() { 
+            open("js13-window-id-check.html", "", "width=300px,height=300px");
+        }
+    </script>
+    
+    
+</head>
+<body>
+    
+    <h1>window객체</h1> 
+	<!-- 제목 -->
+	
+	<pre>
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+    
+	<div id="f1"> 
+		<h1>팝업창 만들기</h1> 
+		<!-- 제목 입력, 수정 -->
+		<button onclick="openWin()" name="btn">창열기</button> 
+		<!-- openwin  함수로 가기 -->
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+		<!-- 레지스트 폼 함수 실행, 회원가입 창 -->
+	</div>
+
+    <!-- 회원가입폼 시작 -->
+	<div id="regist">
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> 
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td> 
+					<!-- colspan 2 열 2개를 합치기  -->
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="button" value="확인" onclick="closeWin()" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 회원가입폼 종료 -->
+
+	<br/><br/><br/>
+	<iframe name="myframe"></iframe>
+	<!-- 문서 안의 새로운 문서 -->
+
+
+</body>
+</html>

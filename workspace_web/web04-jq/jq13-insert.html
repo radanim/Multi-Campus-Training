@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.insert</title>
+    <style>
+        div{border:1px solid red}
+    </style>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+    <script>
+        var cnt = 0
+        $(function(){
+            $('button:eq(0)').click(function(){
+                // 기준.after(내용)
+                $('#base').after('<div>새로운 엘리먼트(after)'+(++cnt)+'</div>');
+            });
+            $('button:eq(1)').click(function(){
+                // 내용.insertAfter(기준)
+                ($('<div>새로운 엘리먼트(after)'+(++cnt)+'</div>')).insertAfter("#base");
+            });
+            $('button:eq(2)').click(function(){
+                // 기준.before(내용) // target이 앞
+                $('#base').before('<div>새로운 엘리먼트(after)'+(++cnt)+'</div>');
+            });
+            $('button:eq(3)').click(function(){
+                // 내용.insertBefore(기준) // target이 뒤
+                $('<div>새로운 엘리먼트(after)'+(++cnt)+'</div>').insertBefore("#base");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>after()</button>
+    <button>inertAfter()</button>
+    <button>before()</button>
+    <button>insertBefore()</button>
+
+    <div id='base'>
+        <p>외부 삽입</p>
+    </div>
+</body>
+</html>

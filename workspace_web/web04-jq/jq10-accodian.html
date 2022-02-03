@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.아코디언메뉴</title>
+    <style>
+        .main_menu{width:300;}
+        .sub_menu1{cursor:pointer;}
+        .sub_menu2{display:none; cursor: default;}
+    </style>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('b').click(function(){
+                $(this).siblings('ul').show()
+                $(this).parent().siblings().children('.sub_menu2').hide()
+            }); 
+        });
+
+    </script>
+</head>
+<body>
+    <p>메뉴 만들기</p>
+    <ul type='square' class='main_menu'>
+        <li class='sub_menu1'><b>(1)css선택자</b>
+            <ul type='circle' class='sub_menu2'>
+                <li>tag</li>
+                <li>id</li>
+                <li>class</li>
+                <li>parent child</li>
+                <li>parent &gt; child</li>
+                <li>:nth-child</li>
+                <li>:first-child</li>
+                <li>:last-child</li>
+            </ul>
+        </li>
+
+        <li class='sub_menu1'><b>(2)속성 선택자</b>
+            <ul type='circle' class='sub_menu2'>
+                <li>after</li>
+                <li>attr=value</li>
+                <li>attr!=value</li>
+            </ul>
+        </li>
+
+        <li class='sub_menu1'><b>(3)폼 선택자</b>
+            <ul type='circle' class='sub_menu2'>
+                <li>input:type</li>
+            </ul>
+        </li>
+
+        <li class='sub_menu1'><b>(4)사용자 정의</b>
+            <ul type='circle' class='sub_menu2'>
+                <li>:eq</li>
+                <li>:first</li>
+                <li>:last</li>
+                <li>:even</li>
+                <li>:odd</li>
+                <li>:parent</li>
+
+            </ul>
+        </li>
+
+    </ul>
+</body>
+</html>

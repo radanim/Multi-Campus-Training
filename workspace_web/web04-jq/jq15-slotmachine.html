@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width:150px;
+            height:150px;
+            float:left;
+        }
+        #menubox{position: relative;}
+        #menu{overflow:auto;}
+        .sel{
+            width:140px;
+            height:140px;
+            border:5px dotted red;
+            position: absolute;
+            left: 300px;
+
+        }
+        button{
+            width:150px;
+            height:50px;
+            margin-left:300px;
+        }
+    </style>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(function(){
+            setInterval(function(){ 
+                //mdn에 setinterval 함수 검색, 일정한 시간 간격을 두고 시행 반복하는 함수. 
+                var div=$("#menu"); 
+                // div 안에 id가 menu인 div내 태그들을 추가 
+                $(".active").first().appendTo(div);
+                //append 자식, 막내 뒤에 넣음. append to 와의 차이는 앞에 오냐 뒤에 오냐의 차이. div의 맨 아래요소로 추가가 아니라 이동.
+            },100);
+            // 100ms 단위 delay 개발자탭을 통해서 이미지 태그에 하나씩 추가되는 것 확인. first 뒤에 붙이도록 설정.
+
+            $("button").click(function(){
+                // 버튼 태그 누그면 함수가 실행이 되는데 active라는 클래스로 껏다켯다함.
+                $("img").toggleClass("active");
+                // img태그를 찾아서 클래스를 active로 바꿈. 버튼의 텍스트가 스타트면 스탑이 되고, 아니면 스타트 유지. toggleclass(클래스를 바꿈.)
+                if($("button").text()=="start"){
+                    $("button").text("stop");
+                } else{
+                    $("button").text("start");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>SlotMachine</h1>
+
+    <div id="menubox"> 
+        <!-- div 태그 -->
+        <div class="sel"></div>
+
+        <div id="menu">
+            <img src="resources/imgs/img01.png" alt="img01">
+            <img src="resources/imgs/img02.png" alt="img02">
+            <img src="resources/imgs/img03.png" alt="img03">
+            <img src="resources/imgs/img04.png" alt="img04">
+            <img src="resources/imgs/img05.png" alt="img05">
+            <img src="resources/imgs/img06.png" alt="img06">
+        </div>
+
+        <button>start</button>
+    </div>
+
+</body>
+</html>

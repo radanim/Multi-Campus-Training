@@ -1,0 +1,19 @@
+cd mysite
+python manage.py runserver
+conda deactivate
+conda info --envs
+django
+
+hello/hello/views.py
+
+cd hello
+python manage.py runserver
+
+클라이언트 요청 urls.py가 views.py 로 보내줌
+views.py는 그에 맞는 요청에 따른 응답을 보내줌. 
+
+터미널에서 ctrl + c로 종료
+
+python manage.py startapp hello01
+
+hello/hello01/urls.py

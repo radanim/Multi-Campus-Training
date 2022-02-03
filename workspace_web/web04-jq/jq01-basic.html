@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img{
+            width:200px;
+            height:200px;
+        }
+    </style>
+
+    <script src="resources/js/jquery-3.6.0.min.js"></script> 
+    <!-- script 사이에 코드 넣으면 절대 안됨!  -->
+
+    <script>
+        /* jquery 기본 작성법!
+         -> selector 표현식
+        jQuery("selector").method();
+        $("selector").method();
+        ->$("p").css("color","red");
+
+        기능 구현!!!
+        onload=function(){
+
+        }
+        -> $(function(){
+
+        });
+
+        $(document).ready(function(){
+
+        });
+        */
+
+        $(function(){
+            $("#test-btn").click(function(){
+                alert("클릭했음!!");
+        });
+
+        $("img").click(function(){ //img 태그
+            $(this).hide(); // 이미지 클릭하면 사라지게함. 태그 숨기기.
+        });
+
+
+    });
+
+
+    </script>
+</head>
+<body>
+    
+    <h1>JQuery:javascript library</h1> 
+    <!-- jQuery는 자바스크립트 라이브러리, 빠르고 다기능, matplotlib같은 모듈과 비슷 -->
+
+    <button id="test-btn">click me</button>
+    <br>
+    <button onclick="">이미지보이기</button>
+    <button onclick="">이미지축소</button>
+    <button onclick="">이미지추가</button>
+    <button onclick="">이미지숨기기/보이기</button>
+    <br>
+    <br>
+    <div>
+        <img src="resources/imgs/img01.png" alt="img01">
+    </div>
+
+
+</body>
+</html>

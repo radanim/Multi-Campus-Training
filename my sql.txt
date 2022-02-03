@@ -1,0 +1,190 @@
+sql 데이터베이스를 다루는 언어
+>mysql 오라클이 낸, 데이터베이스를 활용하는 툴, 
+maria sql, mongo DB, maria DB
+
+앱개발 데이터베이스로 사용
+mysql -u root -p
+show databases;
+use multi
+show tables;
+desc join_a;
+
+캐스톤 디자인 앱개발 
+공모전 
+
+create database study;
+use study;
+show tables;
+create table student(
+	id int, 
+	name varchar(100),  
+	phone char(13), 
+	address varchar(1000)
+);
+varchar 변경가능 문자열 100자리 80자리 20자리 없애버림. 
+> char(80) > char(100)
+char 무조건 13자리 부족하면 공백처리
+entity  속성
+
+show tables;
+desc student;
+select (칼럼명(엔티티명))
+from (테이블명)
+
+select * from table
+select (id,name,phone,address)
+* 전체칼럼 표현
+
+insert into (테이블명)(칼럼명, id)
+values(값1, 값2, 값3, 값4)
+
+null 허용 유무에 따라 에러 not null
+
+insert into 한세트로 활용
+insert into student
+value(1,'성낙원','010-1111-1111','서울')
+insert into student
+value(2,'정진한','010-2222-2222','대구');
+insert into student
+value(3,'홍지수','010-3333-3333','서울');
+
+select * from student;
+
+select * from (테이블명);
+select (컬럼명) 
+from (테이블명);
+where (조건식); --관계 대수
+
+select name from student;
+
+select from 한세트로 활용
+select *
+from student
+where 컬럼명 (연산식);
+ 	address =='서울'
+
+select *(all)
+from student
+where address ='서울' or name='정진한'
+limit 100;
+
+*김*  - 김 OO, O김O, OO김
+김* - 김OOOOOO, 김OO
+
+update set 한쌍으로 활용
+update students
+set phone
+
+update 테이블명
+set 컬럼명1 = 변경할 값1,
+컬럼명2 = 변경할 값2,
+컬럼명3 = 변경할 값3
+where 컬럼명 (조건식);
+
+update student
+set age = 20
+where id = 1;
+
+alter 컬럼명 변경
+alter table (테이블명)
+add (컬럼명) (속성);
+
+alter table student
+add age int;
+
+update student
+set age = 20
+where id = 1;
+update student
+
+set age = 18
+where id = 2;
+
+update student
+set age = 19
+where id = 3;
+
+update student
+set age = 18
+where id =2 or id=3;
+
+update student
+set age = 17;
+
+select (컬럼명)
+from (테이블명)
+order by (기준 컬럼명) (생략/asc/desc)
+
+select *
+from student
+order by age desc, id asc;
+
+source C:/Users/낙원이/Downloads/test_db-master/employees.sql;
+
+show databases;
+use employees
+show tables;
+desc employees;
+
+-- count() > 집계함수 
+-- sum()/count()/avg()/max()/min()
+
+select count(*)
+-- select (컬럼명) > select *
+from employees;
+null은 카운트에 집계안됨.
+
+select emp_no, first_name, last_name
+from employees
+limit 10;
+
+mysql -u root -p
+source employees.sql
+
+emp_no > 기본키 > not null
+
+desc employees;
+
+select *
+from employees
+where emp_no between 0 and 10000;
+
+source employees.sql
+
+select hire_date
+from employees
+where year(hire_date) = 1990
+limit 50;
+
+select hire_date
+from employees
+where month(hire_date) = 12
+limit 50;
+
+select emp_no,hire_date
+from employees
+where day(hire_date) = 20
+limit 10;
+
+update employees
+set hire_date='2021-02-03 11-32-10'
+where emp_no = 10013 or emp_no = 10026;
+
+select emp_no,hire_date
+from employees
+where emp_no = 10013
+
+select emp_no,hire_date
+from employees
+where hour(hire_date) = 11
+limit 50;
+
+
+
+
+
+
+
+
+
+

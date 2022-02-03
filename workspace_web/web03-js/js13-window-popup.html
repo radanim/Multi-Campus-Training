@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        function test(){
+            var val=document.getElementsByName("test")[0].value; //테스트 이름을 가진 객체, 노드 리스트로 가도록, 첫번째 값의 밸류만 가져오기 
+            opener.document.getElementsByTagName("h1")[1].innerHTML=val; //opener객체는 팝업창에서 자신을 오픈한 제어, 태크네임이 h1 head를 가진 엘리먼트 찾음.  
+            close();
+        }
+    </script>
+    
+</head>
+<body>
+    <!-- 인풋 3개 -->
+	<input type="text" name="test"/>  
+    <!-- 입력칸 생성 -->
+	<input type="button" onclick="test()" value="전달"/>
+    <!-- 버튼 클릭하면 test 함수 실행 -->
+	<input type="button" onclick="self.close()" value="창닫기"> 
+    <!-- close창 실행 안됨 -->
+
+
+</body>
+</html>

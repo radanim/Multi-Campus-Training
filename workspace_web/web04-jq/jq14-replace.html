@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14. replace</title>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            // target 앞
+            $('button:first').click(function(){
+                // target 생성 후 p태그 만듦(함수 가능)
+                $('p').replaceWith('<p><b>replaceWith()</b></p>');
+            })
+            // target 뒤
+            $('button:last').click(function(){
+                // p태그를 만들어놓는 상태에서 target 지정
+                // 함수로 했을 때 
+                $('<p><b>replaceAll()</b></p>').replaceAll('p');
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <p>DOM 대체</p>
+    </div>
+
+    <button>바꾸기(replaceWith)</button>
+    <button>바꾸기(replaceAll)</button>
+</body>
+</html>

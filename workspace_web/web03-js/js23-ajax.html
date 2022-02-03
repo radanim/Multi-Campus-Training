@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ajaxTest(){
+
+            var xhr=new XMLHttpRequest(); // new 객체 만들고 있음, xmlhttp 통신객체
+
+            xhr.onreadystatechange = function(){
+                //4:요청의 완료
+                if (xhr.readyState==4){
+                    // 200: 정상 응답
+                    if (xhr.status == 200) {
+                        alert(xhr.responseText); // 요청해서 문자열로 가져옴 
+                        var respXml = xhr.responseXML;
+                        //console.log(respXml);
+                        //console.log(typeof(respXml));
+
+                        var table = document.getElementById('tb');
+                        var rows = respXml.getElementsByTagName('ROW');
+                        // console.log(rows); // row =nodelist
+
+                        //1. column 이름 만들자
+                        var columnTr= document.createElement("tr");
+                        for (var i = 0; i<rows[0].children.length; i++) {
+                            // console.log(rows[0].children[i].nodeName);
+                            var th=document.createElement("th");
+                            th.appendChild(document.createTextNode(rows[0].children[i].nodeName));
+
+                            columnTr.appendChild(th);
+
+                        }
+                        table.appendChild(columnTr);
+
+                        //2. data 만들자
+                        for (var i =0; i<rows.length; i++){
+                            var tr = document.createElement("tr");
+                            for(var j=0; j<rows[i].children.length; j++){
+                                var td=document.createElement("td")
+                                td.appendChild(document.createTextNode(rows[i].children[j].textContent));
+                                tr.appendChild(td);
+                            }
+                            table.appendChild(tr);
+                        }
+                    }
+                }
+            }
+
+            //get 방식으로 요청, 해당 경로에 
+            xhr.open('GET','emplist.xml')
+            xhr.send(); // 실제로 실행할거야
+        }
+
+    </script>
+</head>
+<body>
+    
+
+    <!-- ajax: Asynchronous Javascript And Xml
+    비동기 통신 -->
+
+    <button onclick="ajaxTest();">ajax</button>
+  
+
+    <table id="tb" border="1"></table>
+        
+
+</body>
+</html>
