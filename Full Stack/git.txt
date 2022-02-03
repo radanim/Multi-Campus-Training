@@ -93,7 +93,9 @@ git
 	ex. git pull origin master
 
 순서) git pull -> git add -> git commit -> git push
-
+git add .
+git commit -m "all update"
+git push origin master
 
 
 
